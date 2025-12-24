@@ -1,0 +1,88 @@
+PROJECT: @gl-life/gl-life-tenant v1.0.0
+
+DESCRIPTION:
+Multi-tenant management system for GoodLife CloudForge. This package provides comprehensive tenant isolation, subscription management, and tenant-aware middleware for building multi-tenant SaaS applications on Cloudflare Workers.
+
+DEPENDENCIES:
+- @gl-life/gl-life-core@^1.0.1 (NPM - for Result, Option, Logger, EventBus, Config, Error handling)
+- @gl-life/gl-life-database@^1.0.0 (NPM - for database operations with multi-tenant support)
+
+CORE FEATURES:
+1. Tenant Management
+   - Tenant CRUD operations (create, read, update, delete, list)
+   - Tenant hierarchy support (parent-child relationships)
+   - Tenant metadata and custom settings
+   - Tenant status management (active, suspended, trial, archived)
+   - Tenant domain mapping (custom domains per tenant)
+
+2. Tenant Context & Isolation
+   - AsyncLocalStorage-based tenant context (Workers compatible)
+   - Automatic tenant identification from request (domain, header, subdomain)
+   - Tenant middleware for Express/Hono frameworks
+   - Request-scoped tenant context
+   - Cross-tenant access prevention
+
+3. Subscription Management
+   - Subscription plans (free, basic, pro, enterprise)
+   - Plan features and limits configuration
+   - Usage tracking and quota enforcement
+   - Billing cycle management (monthly, annual, custom)
+   - Trial period support with expiration
+   - Plan upgrades/downgrades with pro-rating
+   - Payment integration (Stripe, PayPal ready)
+
+4. Tenant Provisioning & Onboarding
+   - Automated tenant provisioning workflow
+   - Tenant schema initialization
+   - Default data seeding per tenant
+   - Tenant onboarding checklist
+   - Email verification and welcome emails
+
+5. Tenant Security
+   - Tenant-level encryption keys
+   - Per-tenant API keys
+   - Tenant isolation validation
+   - Rate limiting per tenant
+   - Security audit logs
+
+6. CloudForge Integration
+   - Cloudflare D1 tenant database routing
+   - Durable Objects for tenant state
+   - Workers KV for tenant caching
+   - R2 for tenant-specific file storage
+
+TECHNICAL REQUIREMENTS:
+- TypeScript 5.x with strict mode
+- ESM + CJS dual build (tsup)
+- Test coverage >95% (Vitest)
+- Zero runtime dependencies except: @gl-life/gl-life-core, @gl-life/gl-life-database, zod
+- Cloudflare Workers compatible
+- Performance: <5ms tenant resolution overhead
+
+ARCHITECTURE:
+- Clean architecture with service layer pattern
+- Dependency injection for testability
+- Event-driven for tenant lifecycle hooks
+- Middleware pattern for framework integration
+- Plugin system for custom tenant resolvers
+
+DELIVERABLES:
+1. TenantService (CRUD, hierarchy, provisioning)
+2. TenantMiddleware (Express/Hono integration)
+3. SubscriptionManager (plans, billing, usage tracking)
+4. TenantContext manager (AsyncLocalStorage)
+5. Tenant resolver strategies (domain, subdomain, header)
+6. Comprehensive test suite
+7. API documentation (API.md for AI agents)
+8. Usage examples
+9. README with quick start guide
+10. NPM package published to @gl-life/gl-life-tenant
+
+CONSTRAINTS:
+- Must work in Cloudflare Workers environment
+- Must integrate seamlessly with gl-life-database
+- Must use @gl-life/gl-life-core for all cross-cutting concerns (logging, errors, config)
+- Follow same package standards as gl-life-core (Apache 2.0, packages@gl.life, API.md)
+
+TIMELINE: TBD based on generated plan
+END
