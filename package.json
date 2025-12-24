@@ -1,5 +1,5 @@
 {
-  "name": "gl-life-tenant-new",
+  "name": "@gl-life/gl-life-tenant",
   "version": "1.0.0",
   "description": "Project with Claude Code structured development framework",
   "type": "module",
